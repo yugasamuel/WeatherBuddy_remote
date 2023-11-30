@@ -18,19 +18,11 @@ import WeatherKit
                 return try await self?.weatherService.weather(for: .init(latitude: lat, longitude: long))
             }.value
             
-            let attribution = try await weatherService.attribution
-            
         } catch {
             print("Failed to get weather data. \(error)")
         }
     }
-    
-    var condition: String {
-        guard let condition = weather?.currentWeather.condition else { return "--" }
-        
-        return condition.description
-    }
-    
+
     var icon: String {
         guard let iconName = weather?.currentWeather.symbolName else { return "--" }
         
